@@ -1,0 +1,34 @@
+{
+  "name": "avto",
+  "version": "1.0.0",
+  "description": "test version",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "fastify start -l info -P app.js",
+    "fastify-help": "fastify help",
+    "nodemon": "nodemon --exec npm run dev",
+    "lint": "standard",
+    "lint-fix": "standard --fix",
+    "watch": "fastify start -l info -P -w app.js"
+  },
+  "author": "neyy",
+  "license": "ISC",
+  "dependencies": {
+    "autoload": "^0.1.2",
+    "crypto": "^1.0.1",
+    "fastify": "^2.6.0",
+    "fastify-autoload": "^1.0.0",
+    "fastify-jwt": "^1.0.0",
+    "fastify-mysql": "^0.3.0",
+    "fastify-plugin": "^1.5.0",
+    "fastify-redis": "^3.1.1",
+    "fastify-swagger": "^2.4.0",
+    "lodash": "^4.17.15",
+    "nodemon": "^1.19.1"
+  },
+  "devDependencies": {
+    "standard": "^13.1.0"
+  }
+}
