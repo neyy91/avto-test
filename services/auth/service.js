@@ -13,7 +13,7 @@ class AuthService {
 
     let user = await this.fastify.FindUserByLogin(dataUser.login)
 
-    if (user) throw await fastify.Errors(ERRORS.LOGIN_EXIST)
+    if (user) throw await this.fastify.Errors(ERRORS.LOGIN_EXIST)
 
     let defaultUser = {
       login: dataUser.login,

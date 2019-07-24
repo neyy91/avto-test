@@ -2,7 +2,12 @@
 const path = require('path')
 const AutoLoad = require('fastify-autoload')
 const fp = require('fastify-plugin')
+
+const fileUpload = require('fastify-file-upload')
+
+
 const AuthService = require('./services/auth/service')
+const UploadGeoDataService = require('./services/upload/service')
 
 const swaggerOption = {
   swagger: {
@@ -45,6 +50,9 @@ async function connectToDatabases (fastify) {
 module.exports = function (fastify, opts, next) {
   fastify.register(require('fastify-swagger'), swaggerOption)
 
+  fastify.register(fileUpload)
+
+
   fastify.register(AutoLoad, {
     dir: path.join(__dirname, 'plugins'),
     options: Object.assign({}, opts)
@@ -59,6 +67,8 @@ module.exports = function (fastify, opts, next) {
   const authService = new AuthService(fastify)
   fastify.decorate('authService', authService)
 
+  const uploadGeoDataService = new UploadGeoDataService(fastify)
+  fastify.decorate('uploadGeoDataService', uploadGeoDataService)
 
   //= =============init base and auth ===========================
 
