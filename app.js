@@ -13,7 +13,7 @@ const swaggerOption = {
   swagger: {
     info: {
       title: 'Geo Service',
-      description: 'Описание методов API сервиса',
+      description: 'Description methods API services',
       version: '0.1.0'
     },
     host: '127.0.0.1:3000',

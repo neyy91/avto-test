@@ -12,19 +12,19 @@ const _bodyAuth = {
 }
 
 const registration = {
-  description: 'Регистрация пользователя',
+  description: 'Registration user',
   body: _bodyAuth,
   response: {}
 }
 
 const login = {
-  description: 'Авторизация в приложении',
+  description: 'Autorisation user',
   body: _bodyAuth,
   response:{}
 }
 
 const logout = {
-  description: 'Выход из текущего аккаунта',
+  description: 'Logout',
   headers: SHEMA.authToken,
   response:{}
 }

@@ -5,8 +5,9 @@ const {
 } = require('./shemas')
 
 module.exports = function (fastify, opts, next) {
- 
-  fastify.post('/upload', {
+  fastify.addHook('preHandler', fastify.authPreHandler)
+
+  fastify.post('/upload/file/check/occurrence', {
     schema: uploadGeoDataSchema
   }, uploadGeoDataHandler)
 
@@ -24,23 +25,14 @@ module.exports[Symbol.for('plugin-meta')] = {
 }
 
 async function uploadGeoDataHandler(req, reply) {
-  const files = req.raw.files
-  console.log(files)
-  let fileArr = []
-  for(let key in files){
-    fileArr.push({
-      name: files[key].name,
-      mimetype: files[key].mimetype
+
+  return this.uploadGeoDataService.uploadData(req.raw.files)
+    .then(res => {
+      reply.send({
+        code: 201,
+        error: false,
+        data: res
+      })
     })
-  }
-  reply.send(fileArr)
-  // return this.uploadGeoDataService.uploadData(req.body)
-  //   .then(res => {
-  //     reply.send({
-  //       code: 201,
-  //       error: false,
-  //       data: res
-  //     })
-  //   })
 
 }
